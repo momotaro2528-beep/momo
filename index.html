@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minion มองตามเมาส์ (CSS Art)</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
+      font-family: system-ui, sans-serif;
+      overflow: hidden;
+    }
+
+    .minion {
+      position: relative;
+      width: 220px;
+      height: 320px;
+    }
+
+    .head {
+      width: 180px;
+      height: 180px;
+      background: #ffcc00;
+      border-radius: 50%;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      box-shadow: 
+        inset 0 20px 40px rgba(0,0,0,0.1),
+        inset -30px -30px 60px rgba(255,255,255,0.4);
+    }
+
+    .hair {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 60px;
+    }
+    .hair::before,
+    .hair::after {
+      content: "";
+      position: absolute;
+      background: #000;
+      border-radius: 50%;
+    }
+    .hair::before {
+      width: 60px;
+      height: 60px;
+      top: -10px;
+      left: 10px;
+      box-shadow: 60px 0 #000;
+    }
+    .hair::after {
+      width: 40px;
+      height: 40px;
+      top: 5px;
+      left: 45px;
+      box-shadow: -80px 0 #000;
+    }
+
+    .goggles {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 70px;
+      background: #333;
+      border-radius: 50px;
+      border: 12px solid #222;
+      box-sizing: border-box;
+    }
+
+    .eye {
+      position: absolute;
+      top: 12px;
+      width: 42px;
+      height: 42px;
+      background: white;
+      border-radius: 50%;
+      border: 4px solid #111;
+      box-shadow: inset 0 4px 8px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+    .eye.left  { left: 20px; }
+    .eye.right { right: 20px; }
+
+    .pupil {
+      width: 18px;
+      height: 24px;
+      background: #000;
+      border-radius: 50%;
+      position: absolute;
+      top: 9px;
+      left: 12px;
+      box-shadow: inset 0 4px 6px rgba(255,255,255,0.4);
+      transition: transform 0.12s ease-out;
+    }
+
+    .mouth {
+      position: absolute;
+      top: 130px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 40px;
+      background: #000;
+      border-radius: 0 0 60px 60px;
+      overflow: hidden;
+    }
+    .mouth::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 20px;
+      background: #ff4d4d;
+      top: 12px;
+      border-radius: 50%;
+    }
+
+    .body {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 220px;
+      height: 180px;
+      background: #ffcc00;
+      border-radius: 100px 100px 40px 40px;
+    }
+
+    .overalls {
+      position: absolute;
+      top: 30px;
+      left: 20px;
+      width: 180px;
+      height: 140px;
+      background: #4169e1;
+      border-radius: 30px;
+      box-shadow: inset 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .pocket {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 60px;
+      background: #2a4bb2;
+      border-radius: 20px;
+      border: 4px solid #ff9900;
+    }
+    .pocket::before {
+      content: "G";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ff9900;
+      font-size: 28px;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+    }
+
+    .strap {
+      position: absolute;
+      top: -20px;
+      width: 40px;
+      height: 60px;
+      background: #4169e1;
+      border-radius: 20px 20px 0 0;
+    }
+    .strap.left  { left: 40px; }
+    .strap.right { right: 40px; }
+
+    .button {
+      width: 20px;
+      height: 20px;
+      background: #ff9900;
+      border-radius: 50%;
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      box-shadow: inset 0 -4px 6px rgba(0,0,0,0.3);
+    }
+
+    .arm {
+      position: absolute;
+      bottom: 60px;
+      width: 50px;
+      height: 100px;
+      background: #ffcc00;
+      border-radius: 30px;
+    }
+    .arm.left  { left: -30px; transform: rotate(-25deg); }
+    .arm.right { right: -30px; transform: rotate(25deg); }
+
+    .hand {
+      position: absolute;
+      bottom: -20px;
+      width: 60px;
+      height: 50px;
+      background: #000;
+      border-radius: 50% 50% 40% 40%;
+      box-shadow: inset 0 10px 20px rgba(255,255,255,0.2);
+    }
+    .hand.left  { left: -10px; }
+    .hand.right { right: -10px; }
+
+    .leg {
+      position: absolute;
+      bottom: -10px;
+      width: 60px;
+      height: 80px;
+      background: #4169e1;
+    }
+    .leg.left  { left: 40px; }
+    .leg.right { right: 40px; }
+
+    .shoe {
+      position: absolute;
+      bottom: -20px;
+      width: 80px;
+      height: 40px;
+      background: #000;
+      border-radius: 40px 40px 10px 10px;
+      box-shadow: inset 0 10px 20px rgba(255,255,255,0.15);
+    }
+    .shoe.left  { left: -10px; }
+    .shoe.right { right: -10px; }
+  </style>
+</head>
+<body>
+
+  <div class="minion">
+    <div class="head">
+      <div class="hair"></div>
+      <div class="goggles">
+        <div class="eye left"><div class="pupil" id="pupil-left"></div></div>
+        <div class="eye right"><div class="pupil" id="pupil-right"></div></div>
+      </div>
+      <div class="mouth"></div>
+    </div>
+
+    <div class="body">
+      <div class="overalls">
+        <div class="pocket"></div>
+        <div class="strap left"><div class="button"></div></div>
+        <div class="strap right"><div class="button"></div></div>
+      </div>
+
+      <div class="arm left"><div class="hand left"></div></div>
+      <div class="arm right"><div class="hand right"></div></div>
+
+      <div class="leg left"><div class="shoe left"></div></div>
+      <div class="leg right"><div class="shoe right"></div></div>
+    </div>
+  </div>
+
+  <script>
+    const pupilLeft  = document.getElementById('pupil-left');
+    const pupilRight = document.getElementById('pupil-right');
+
+    // ค่าควบคุมระยะการเคลื่อนที่ของม่านตา (หน่วย px)
+    const maxMove = 8;
+
+    document.addEventListener('mousemove', (e) => {
+      // หาตำแหน่งกึ่งกลางของแต่ละตา (เทียบกับ viewport)
+      const leftEyeRect  = pupilLeft.parentElement.getBoundingClientRect();
+      const rightEyeRect = pupilRight.parentElement.getBoundingClientRect();
+
+      const leftCenterX  = leftEyeRect.left  + leftEyeRect.width  / 2;
+      const leftCenterY  = leftEyeRect.top   + leftEyeRect.height / 2;
+
+      const rightCenterX = rightEyeRect.left + rightEyeRect.width / 2;
+      const rightCenterY = rightEyeRect.top  + rightEyeRect.height / 2;
+
+      // คำนวณระยะห่างเมาส์จากจุดกึ่งกลางตา
+      const deltaLeftX  = e.clientX - leftCenterX;
+      const deltaLeftY  = e.clientY - leftCenterY;
+
+      const deltaRightX = e.clientX - rightCenterX;
+      const deltaRightY = e.clientY - rightCenterY;
+
+      // จำกัดระยะเคลื่อนที่
+      const moveLeftX  = Math.max(-maxMove, Math.min(maxMove, deltaLeftX  * 0.08));
+      const moveLeftY  = Math.max(-maxMove, Math.min(maxMove, deltaLeftY  * 0.08));
+
+      const moveRightX = Math.max(-maxMove, Math.min(maxMove, deltaRightX * 0.08));
+      const moveRightY = Math.max(-maxMove, Math.min(maxMove, deltaRightY * 0.08));
+
+      // เอฟเฟกต์การมองตามเมาส์
+      pupilLeft.style.transform  = `translate(${moveLeftX}px, ${moveLeftY}px)`;
+      pupilRight.style.transform = `translate(${moveRightX}px, ${moveRightY}px)`;
+    });
+  </script>
+
+</body>
+</html>
